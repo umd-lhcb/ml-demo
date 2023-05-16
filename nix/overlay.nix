@@ -5,13 +5,17 @@ final: prev:
     correctionlib = finalPy.callPackage ./correctionlib { };
     dask-histogram = finalPy.callPackage ./dask-histogram { };
     cloudpickle = finalPy.callPackage ./cloudpickle { };
-    coffea = finalPy.callPackage ./coffea { };  # the main thing
-
-    # disable test
+    coffea = finalPy.callPackage ./coffea { }; # the main thing
 
     # update
     dask = finalPy.callPackage ./dask { };
     dask-awkward = finalPy.callPackage ./dask-awkward { };
+    llvmlite = finalPy.callPackage ./llvmlite {
+      llvm = final.llvm_14;
+    };
+    numba = finalPy.callPackage ./numba { };
+
+    # override
     awkward-cpp = prevPy.awkward-cpp.overridePythonAttrs (old: rec {
       version = "15";
       src = prevPy.fetchPypi {

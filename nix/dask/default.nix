@@ -85,7 +85,8 @@ buildPythonPackage rec {
     pytest-xdist
     scipy
     zarr
-  ] ++ lib.optionals (!arrow-cpp.meta.broken) [ # support is sparse on aarch64
+  ] ++ lib.optionals (!arrow-cpp.meta.broken) [
+    # support is sparse on aarch64
     fastparquet
     pyarrow
   ];

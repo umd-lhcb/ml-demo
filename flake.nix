@@ -1,5 +1,5 @@
 {
-  description = "A devShell for HEP machine-learning demos.";
+  description = "HEP machine-learning demos.";
 
   inputs = {
     root-curated.url = "github:umd-lhcb/root-curated/dev";
@@ -27,9 +27,9 @@
         devShell = pkgs.mkShell {
           name = "ml-demo";
           buildInputs = [
-            pkgs.tensorflow
+            #pkgs.tensorflow
             pythonPackages.coffea
-            pythonPackages.matplotlib
+            #pythonPackages.dask-awkward
           ];
         };
       });
