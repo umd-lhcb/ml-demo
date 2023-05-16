@@ -29,7 +29,6 @@
           buildInputs = [
             #pkgs.tensorflow
             pythonPackages.coffea
-            #pythonPackages.dask-awkward
           ];
         };
       });
