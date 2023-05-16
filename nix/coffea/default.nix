@@ -1,4 +1,3 @@
-
 { lib
 , buildPythonPackage
 , fetchPypi
@@ -32,7 +31,7 @@ buildPythonPackage rec {
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "sha256-ZlX6ItGx0dy5zO4NUCNQq5DFNGehC1QLdiRCK1lNLnI=";
+    sha256 = "sha256-MOTea5cepjVx80XG6wZCJychO8VymbaxG4OWsBM3GyI=";
   };
 
   propagatedBuildInputs = [ awkward uproot dask dask-awkward dask-histogram correctionlib pyarrow fsspec matplotlib numba numpy scipy tqdm lz4 cloudpickle toml mplhep packaging pandas hist cachetools ];

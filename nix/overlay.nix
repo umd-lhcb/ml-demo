@@ -11,16 +11,7 @@ final: prev:
 
     # update
     dask = finalPy.callPackage ./dask { };
-    dask-awkward = prevPy.dask-awkward.overridePythonAttrs (old: rec {
-      version = "2023.5.0";
-      src = prev.fetchFromGitHub {
-        owner = "dask-contrib";
-        repo = old.pname;
-        rev = version;
-        hash = "sha256-SkzpSpFeyc01AhHtedDDZ8fEd3tM/J5HxDb2mJwPTJo=";
-      };
-      doCheck = false;
-    });
+    dask-awkward = finalPy.callPackage ./dask-awkward { };
     awkward-cpp = prevPy.awkward-cpp.overridePythonAttrs (old: rec {
       version = "15";
       src = prevPy.fetchPypi {
