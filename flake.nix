@@ -26,9 +26,10 @@
       {
         devShell = pkgs.mkShell {
           name = "ml-demo";
-          buildInputs = [
-            pythonPackages.tensorflow
-            pythonPackages.coffea
+          buildInputs = with pythonPackages; [
+            tensorflow
+            coffea
+            hist
           ];
         };
       });
