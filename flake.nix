@@ -28,9 +28,10 @@
           name = "ml-demo";
           buildInputs = with pythonPackages; [
             tensorflow
+            keras
             coffea
             hist
-            black
+            scikit-learn
           ];
         };
       });
