@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
 import math, json
-import numpy as np
+
 import uproot
+import numpy as np
 import awkward as ak
 
 from termcolor import colored
 
 
 def get_data(
-    model_name, path_sig, path_bkg="", do_log=False, training=False, nent=-1, dummy=-9
+    model_name, path_sig, path_bkg=None, do_log=False, training=False, nent=-1, dummy=-9
 ):
-
     # Calculate total number of features
     nobj = 5  # this can't be changed without remaking higfeats ntuples since mjj also has to change
     obj_feats = [
@@ -42,7 +42,7 @@ def get_data(
     print("Found %i entries" % nsig)
 
     # if we want to add bkg events to the training, read bkg. tree and generate the output variable
-    if path_bkg != "":
+    if path_bkg:
         extra_tree = uproot.open(path=path_bkg)["tree"]  # type: uproot.TTree
         print("Loading background data from: " + colored(path_bkg, "yellow"))
         print("Found %i entries" % len(extra_tree))
