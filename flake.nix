@@ -30,6 +30,7 @@
             tensorflow
             coffea
             hist
+            black
           ];
         };
       });
