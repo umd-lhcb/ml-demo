@@ -9,3 +9,9 @@ with tweaks to work with newer version of libraries.
 
 
 ### Usage
+
+Go into `diboson` folder, then:
+
+```
+./train_dnn.py
+```
