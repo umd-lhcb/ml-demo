@@ -3,15 +3,15 @@
 import os
 import argparse
 
-import numpy as np
-
 from time import time
-from termcolor import colored
 
-from tensorflow import keras
+import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import sklearn.model_selection
+
+from termcolor import colored
+from tensorflow import keras
 
 # own libs
 import lib.data_utils as data_utils
@@ -111,9 +111,9 @@ if __name__ == "__main__":
     print("Model name set to: " + colored(model_name, "green"))
 
     x_data, y_data = data_utils.get_data(
-        model_name=model_name,
+        model_name="gen/" + model_name,
         path_sig=args.in_sig,
-        path_bkg="",
+        path_bkg="",  # NOTE: the 'higgs_bkg.root' is UNUSED!
         do_log=args.log_transform,
         training=True,
         nent=args.nent,
@@ -142,13 +142,13 @@ if __name__ == "__main__":
     )
     # callbacks=[tensorboard_callback])
 
-    model.save(model_name + ".h5")
+    model.save("gen/" + model_name + ".h5")
 
     hdf = pd.DataFrame(history.history)
     hdf.plot(figsize=(8, 5))
     plt.grid(True)
-    plt.savefig("history_" + model_name + ".pdf")
+    plt.savefig("gen/history_" + model_name + ".pdf")
     print("\nLoss - validation loss plot:")
-    print("imgcat", "history_" + model_name + ".pdf")
+    print("    gen/history_" + model_name + ".pdf")
 
     print("\nProgram took %.0fm %.0fs." % ((time() - t0) / 60, (time() - t0) % 60))
