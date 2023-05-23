@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import sklearn.model_selection
+import tensorflow as tf
 
 from termcolor import colored
 from tensorflow import keras
@@ -87,11 +88,15 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
 
-    # device = "CPU" if args.cpu else "GPU"
-    # tf.device('/'+device+':0')
     if args.cpu:
         print("Trying to use CPU instead of GPU")
         os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
+    gpus = tf.config.list_physical_devices("GPU")
+    if gpus:
+        print("Using " + colored(gpus[0], "green"))
+    else:
+        print("Using " + colored("CPU", "yellow"))
 
     t0 = time()
     np.set_printoptions(precision=2, suppress=True)
