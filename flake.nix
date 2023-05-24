@@ -34,7 +34,7 @@
           buildInputs = with pythonPackages; [
             # tensorflow & co
             #tensorflow
-            tensorflowWithCuda  # does not compile
+            tensorflowWithCuda  # compiles w/ --impure flag?
             #tensorflow-bin
             pkgs.cudatoolkit
 
