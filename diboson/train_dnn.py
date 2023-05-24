@@ -127,7 +127,8 @@ if __name__ == "__main__":
         x_data, y_data, test_size=0.1, shuffle=False
     )
 
-    print("\nTook %.0f seconds to prepare data." % (time() - t0))
+    print(colored("\nTook %.0f seconds to prepare data." % (time() - t0), "green"))
+    t1 = time()
 
     model = mlp(
         x_train.shape[1],
@@ -147,6 +148,8 @@ if __name__ == "__main__":
     )
     # callbacks=[tensorboard_callback])
 
+    print(colored("\nTook %.0f seconds to train data." % (time() - t1), "green"))
+
     model.save("gen/" + model_name + ".h5")
 
     hdf = pd.DataFrame(history.history)
@@ -156,4 +159,4 @@ if __name__ == "__main__":
     print("\nLoss - validation loss plot:")
     print("    gen/history_" + model_name + ".pdf")
 
-    print("\nProgram took %.0fm %.0fs." % ((time() - t0) / 60, (time() - t0) % 60))
+    print(colored("\nProgram took %dm %.0fs." % ((time() - t0) // 60, (time() - t0) % 60), "green"))
