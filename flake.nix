@@ -19,6 +19,9 @@
             root-curated.overlay
             self.overlay
           ];
+          config = {
+            allowUnfree = true;
+          };
         };
         python = pkgs.python3;
         pythonPackages = python.pkgs;
@@ -27,7 +30,9 @@
         devShell = pkgs.mkShell {
           name = "ml-demo";
           buildInputs = with pythonPackages; [
-            tensorflow
+            #tensorflow
+            #tensorflowWithCuda  # does not compile
+            tensorflow-bin
             keras
             coffea
             hist
