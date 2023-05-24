@@ -32,9 +32,12 @@
         devShell = pkgs.mkShell {
           name = "ml-demo";
           buildInputs = with pythonPackages; [
+            # tensorflow & co
             #tensorflow
-            #tensorflowWithCuda  # does not compile
-            tensorflow-bin
+            tensorflowWithCuda  # does not compile
+            #tensorflow-bin
+            pkgs.cudatoolkit
+
             keras
             coffea
             hist
