@@ -5,9 +5,10 @@
     root-curated.url = "github:umd-lhcb/root-curated/dev";
     nixpkgs.follows = "root-curated/nixpkgs";
     flake-utils.follows = "root-curated/flake-utils";
+    nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { self, nixpkgs, flake-utils, root-curated }:
+  outputs = { self, nixpkgs, flake-utils, root-curated, nixgl }:
     {
       overlay = import ./nix/overlay.nix;
     } //
@@ -17,6 +18,7 @@
           inherit system;
           overlays = [
             root-curated.overlay
+            nixgl.overlay
             self.overlay
           ];
           config = {
@@ -37,6 +39,9 @@
             coffea
             hist
             scikit-learn
+
+            # helpers
+            pkgs.nixgl.auto.nixGLDefault
           ];
         };
       });
