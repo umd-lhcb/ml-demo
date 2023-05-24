@@ -5,10 +5,10 @@ import argparse
 
 from time import time
 
+import sklearn.model_selection
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import sklearn.model_selection
 import tensorflow as tf
 
 from termcolor import colored
@@ -16,10 +16,6 @@ from tensorflow import keras
 
 # own libs
 import lib.data_utils as data_utils
-
-
-# to force running on CPU
-# os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 
 def mlp(nfeats, dense_layers, nodes, loss, optimizer, activation):
@@ -89,7 +85,7 @@ if __name__ == "__main__":
     args = parse_args()
 
     if args.cpu:
-        print("Trying to use CPU instead of GPU")
+        print("Force to running on CPU instead of GPU")
         os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
     gpus = tf.config.list_physical_devices("GPU")
@@ -159,4 +155,9 @@ if __name__ == "__main__":
     print("\nLoss - validation loss plot:")
     print("    gen/history_" + model_name + ".pdf")
 
-    print(colored("\nProgram took %dm %.0fs." % ((time() - t0) // 60, (time() - t0) % 60), "green"))
+    print(
+        colored(
+            "\nProgram took %dm %.0fs." % ((time() - t0) // 60, (time() - t0) % 60),
+            "green",
+        )
+    )
