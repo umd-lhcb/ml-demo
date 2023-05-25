@@ -25,3 +25,23 @@ Go into `diboson` folder, then:
 # or
 ./train_dnn.py --cpu
 ```
+
+### Usage on non-NixOS
+
+Enter a nix shell with the following command:
+
+```shell
+nix develop --impure
+```
+
+**Note the `--impure` flag!**
+
+Go into `diboson` folder, then:
+
+```shell
+nixGL ./train_dnn.py
+# or
+./train_dnn.py --cpu
+```
+
+**Note the `nixGL` wrapper, which makes the script recognize the GPU!**
