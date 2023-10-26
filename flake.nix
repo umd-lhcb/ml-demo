@@ -46,6 +46,11 @@
             # helpers
             pkgs.nixgl.auto.nixGLDefault
           ];
+
+          shellHook = ''
+            # enable cuda support on WSL 2
+            export LD_LIBRARY_PATH=/usr/lib/wsl/lib
+          '';
         };
       });
 }
